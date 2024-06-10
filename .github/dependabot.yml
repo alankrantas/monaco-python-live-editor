@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      time: '09:00'
+      day: 'monday'
+      timezone: 'Asia/Taipei'
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      time: '09:00'
+      day: 'monday'
+      timezone: 'Asia/Taipei'
+    open-pull-requests-limit: 10
