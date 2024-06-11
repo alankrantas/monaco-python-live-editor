@@ -1,6 +1,5 @@
 import {
     FunctionComponent,
-    useRef,
     useState,
 } from "react";
 import Editor from "@monaco-editor/react";
@@ -13,8 +12,8 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
     code = "",
     darkMode = false
 }) => {
-    const monacoRef = useRef<any>(null);
     const [editorCode, setEditorCode] = useState(code);
+    const [executing, setExecuting] = useState(false);
     const [editorDarkMode, setEditorDarkMode] = useState(darkMode);
     const [consoleOutput, setConsoleOutput] = useState<string[]>([]);
 
@@ -38,11 +37,6 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                             options={EditorOptions}
                             language="python"
                             value={editorCode}
-                            onMount={(editor, monaco) => {
-                                if (monaco) {
-                                    monacoRef.current = monaco;
-                                }
-                            }}
                             onChange={(value, e) => {
                                 setEditorCode(value ?? "");
                             }}
@@ -58,7 +52,7 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                             }}
                             className={styles.button}
                         >
-                            Copy
+                            Copy Code
                         </button>
                         &nbsp;
                         <button
@@ -68,23 +62,31 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                             }}
                             className={styles.button}
                         >
-                            Clear
+                            Clear Code
                         </button>
                         &nbsp;
                         <button
-                            onClick={async (e) => setConsoleOutput(await ExecuteCode(editorCode))}
+                            onClick={async (e) => {
+                                if (executing) return;
+                                setExecuting(true);
+                                setConsoleOutput(await ExecuteCode(editorCode));
+                                setExecuting(false);
+                            }}
                             className={styles.button}
+                            disabled={executing}
                         >
-                            Execute
+                            {
+                                executing ? "Executing..." : "Execute"
+                            }
                         </button>
                     </div>
-                    <div className={styles.padded}>
-                        <pre className={styles.code}>
+                    <pre className={styles.code}>
+                        <div className={styles.padded}>
                             {
                                 consoleOutput.join("\n")
                             }
-                        </pre>
-                    </div>
+                        </div>
+                    </pre>
                 </div>
             </div>
         </div>

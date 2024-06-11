@@ -1,0 +1,22 @@
+# Monaco Python Live Editor
+
+'''
+Tip:
+Use print() to print results.
+Supported additional packages: numpy, pandas and scikit-learn.
+
+Note: it will take a moment to load Pyodide for the first time executing.
+Fetching remote files using `pandas.read_csv`, etc. will not work.
+'''
+
+from sklearn.datasets import load_iris
+import pandas as pd
+
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+
+get_target_names = lambda label: iris.target_names[label]
+df['species'] = get_target_names(iris.target)
+
+print(df)
+print(df.info())

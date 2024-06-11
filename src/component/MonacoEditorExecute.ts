@@ -1,15 +1,8 @@
 import { loadPyodide } from "pyodide";
 
 let pyodide: any = null;
-
 let consoleOutput: string[] = [];
 const stdout = (msg: any) => consoleOutput.push(msg);
-
-export const InitializePyodide = async () => {
-    if (pyodide) return;
-
-
-};
 
 export const ExecuteCode = async (code: string): Promise<string[]> => {
     consoleOutput = [];
@@ -22,13 +15,13 @@ export const ExecuteCode = async (code: string): Promise<string[]> => {
             packages: [
                 "numpy",
                 "pandas",
-                "scikit-learn"
+                "scikit-learn",
             ]
         });
     }
 
     try {
-        await pyodide?.runPythonAsync(code);
+        if (pyodide) await pyodide.runPythonAsync(code);
     } catch (e: any) {
         stdout(e.stack);
     } finally {
