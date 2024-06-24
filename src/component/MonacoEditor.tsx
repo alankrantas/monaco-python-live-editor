@@ -77,10 +77,10 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                                 setExecuting(false);
                             }}
                             className={styles.button}
-                            disabled={executing}
+                            disabled={!pyodide || executing}
                         >
                             {
-                                executing ? "Executing..." : "Execute"
+                                !pyodide ? "Loading..." : (executing ? "Executing..." : "Execute")
                             }
                         </button>
                     </div>
