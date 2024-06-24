@@ -1,21 +1,27 @@
 import {
     FunctionComponent,
+    useEffect,
     useState,
 } from "react";
 import Editor from "@monaco-editor/react";
 
 import { MonacoEditorProps, EditorOptions } from "./MonacoEditorOptions";
-import { ExecuteCode } from "./MonacoEditorExecute";
+import { LoadPyodide, ExecuteCode } from "./MonacoEditorExecute";
 import styles from "./MonacoEditor.module.css";
 
 const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
     code = "",
     darkMode = false
 }) => {
+    const [pyodide, setPyodide] = useState(null);
     const [editorCode, setEditorCode] = useState(code);
     const [executing, setExecuting] = useState(false);
     const [editorDarkMode, setEditorDarkMode] = useState(darkMode);
     const [consoleOutput, setConsoleOutput] = useState<string[]>([]);
+
+    useEffect(() => {
+        LoadPyodide().then((py) => setPyodide(py));
+    }, []);
 
     return (
         <div className={styles.container}>
@@ -37,9 +43,7 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                             options={EditorOptions}
                             language="python"
                             value={editorCode}
-                            onChange={(value, e) => {
-                                setEditorCode(value ?? "");
-                            }}
+                            onChange={(value, e) => setEditorCode(value ?? "")}
                         />
                     </div>
                 </div>
@@ -67,9 +71,9 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                         &nbsp;
                         <button
                             onClick={async (e) => {
-                                if (executing) return;
+                                if (!pyodide || executing) return;
                                 setExecuting(true);
-                                setConsoleOutput(await ExecuteCode(editorCode));
+                                setConsoleOutput(await ExecuteCode(pyodide, editorCode));
                                 setExecuting(false);
                             }}
                             className={styles.button}

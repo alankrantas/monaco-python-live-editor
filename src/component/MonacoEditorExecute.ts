@@ -1,24 +1,23 @@
 import { loadPyodide } from "pyodide";
 
-let pyodide: any = null;
 let consoleOutput: string[] = [];
 const stdout = (msg: any) => consoleOutput.push(msg);
 
-export const ExecuteCode = async (code: string): Promise<string[]> => {
-    consoleOutput = [];
+export const LoadPyodide = async (): Promise<any> => {
+    return await loadPyodide({
+        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/",
+        stdout: stdout,
+        stderr: stdout,
+        packages: [
+            "numpy",
+            "pandas",
+            "scikit-learn",
+        ]
+    });
+};
 
-    if (!pyodide) {
-        pyodide = await loadPyodide({
-            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/",
-            stdout: stdout,
-            stderr: stdout,
-            packages: [
-                "numpy",
-                "pandas",
-                "scikit-learn",
-            ]
-        });
-    }
+export const ExecuteCode = async (pyodide: any, code: string): Promise<string[]> => {
+    consoleOutput = [];
 
     try {
         if (pyodide) await pyodide.runPythonAsync(code);
