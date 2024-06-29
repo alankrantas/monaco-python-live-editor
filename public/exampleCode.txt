@@ -7,6 +7,9 @@ Supported additional packages: numpy, pandas and scikit-learn.
 
 Note: it will take a moment to load Pyodide for the first time executing.
 Fetching remote files using `pandas.read_csv`, etc. will not work.
+
+Fun fact: the Pyodide runtime remembers everything you've created until
+you reload this page.
 '''
 
 from sklearn.datasets import load_iris
@@ -19,4 +22,5 @@ get_target_names = lambda label: iris.target_names[label]
 df['species'] = get_target_names(iris.target)
 
 print(df)
+print('---')
 print(df.info())
