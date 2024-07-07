@@ -1,8 +1,6 @@
 import {
     lazy,
     Suspense,
-    useEffect,
-    useState
 } from "react";
 
 import "./App.css";
@@ -11,13 +9,9 @@ const MonacoEditor = lazy(
     () => import("./component/MonacoEditor"),
 );
 
+import exampleCode from "./data/exampleCode.txt?raw";
+
 function App() {
-    const [editorCode, setEditorCode] = useState(`print("Hello World!")`);
-
-    useEffect(() => {
-        fetch("/monaco-python-live-editor/exampleCode.txt").then(res => res.text()).then(data => setEditorCode(data));
-    }, []);
-
     return (
         <div>
             <div>
@@ -26,11 +20,11 @@ function App() {
             <div>
                 <Suspense
                     fallback={
-                        <h4>Loading editor component...</h4>
+                        <h3>Loading editor...</h3>
                     }
                 >
                     <MonacoEditor
-                        code={editorCode}
+                        code={exampleCode}
                         darkMode={true}
                     />
                 </Suspense>
