@@ -3,9 +3,7 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
-      time: '09:00'
-      day: 'monday'
+      interval: 'monthly'
       timezone: 'Asia/Taipei'
     open-pull-requests-limit: 10
     versioning-strategy: increase
@@ -13,8 +11,6 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'weekly'
-      time: '09:00'
-      day: 'monday'
+      interval: 'monthly'
       timezone: 'Asia/Taipei'
     open-pull-requests-limit: 10
