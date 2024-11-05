@@ -5,11 +5,12 @@ const stdout = (msg: any) => consoleOutput.push(msg);
 
 export const LoadPyodide = async (): Promise<any> => {
     return await loadPyodide({
-        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.2/full/",
+        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.3/full/",
         stdout: stdout,
         stderr: stdout,
         packages: [
             "numpy",
+            "scipy",
             "pandas",
             "scikit-learn",
         ]
