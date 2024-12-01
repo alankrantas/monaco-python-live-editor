@@ -5,7 +5,7 @@ const stdout = (msg: any) => consoleOutput.push(msg);
 
 export const LoadPyodide = async (): Promise<any> => {
     return await loadPyodide({
-        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.3/full/",
+        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/",
         stdout: stdout,
         stderr: stdout,
         packages: [
