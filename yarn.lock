@@ -1357,10 +1357,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
-pyodide@^0.26.4:
-  version "0.26.4"
-  resolved "https://registry.yarnpkg.com/pyodide/-/pyodide-0.26.4.tgz#e1420722d86d78cb35a4734404eee5b070ca7189"
-  integrity sha512-z2CHsjVlhhJi5tYBF0AYAfNEPo3zq/z+xOpFtk1tweJkRaTqU4UK/7pLvo8DBU2VDPH31vB3pSI+8fnoqrVrFg==
+pyodide@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/pyodide/-/pyodide-0.27.0.tgz#2b0141ac37a6b0470673b9199d6af1b16cfffe3b"
+  integrity sha512-0O992noCKqv8lPw4+QFWw8d8yrNWVtQ6zPhWNg/RNYbFohiwmV6SGlVh5fWk/4pOxyhgHbayq+ur8JoR/r5U9A==
   dependencies:
     ws "^8.5.0"
 
