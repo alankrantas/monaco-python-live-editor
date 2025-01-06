@@ -3,7 +3,7 @@
 '''
 Tip:
 Use print() to print results.
-Supported additional packages: numpy, scipy, pandas and scikit-learn.
+Supported additional packages: numpy, pandas and scikit-learn.
 
 Note: it will take a moment to load Pyodide for the first time executing.
 Fetching remote files using `pandas.read_csv`, etc. will not work.

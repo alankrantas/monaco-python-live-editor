@@ -20,7 +20,6 @@
         "vscode": {
             "extensions": [
                 "ms-vscode.vscode-typescript-next",
-                "dbaeumer.vscode-eslint",
                 "ms-vscode-remote.remote-containers"
             ]
         }

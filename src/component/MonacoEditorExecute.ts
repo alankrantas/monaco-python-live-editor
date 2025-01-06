@@ -1,19 +1,15 @@
 import { loadPyodide } from "pyodide";
+import pyodideSettings from "../data/pyodide-settings.json";
 
 let consoleOutput: string[] = [];
 const stdout = (msg: any) => consoleOutput.push(msg);
 
 export const LoadPyodide = async (): Promise<any> => {
     return await loadPyodide({
-        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.27.0/full/",
+        indexURL: pyodideSettings.url,
         stdout: stdout,
         stderr: stdout,
-        packages: [
-            "numpy",
-            "scipy",
-            "pandas",
-            "scikit-learn",
-        ]
+        packages: pyodideSettings.packages
     });
 };
 
