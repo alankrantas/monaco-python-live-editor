@@ -1,5 +1,5 @@
 {
-    "url": "https://cdn.jsdelivr.net/pyodide/v0.27.3/full/",
+    "url": "https://cdn.jsdelivr.net/pyodide/v0.27.4/full/",
     "packages": [
         "numpy",
         "pandas",
