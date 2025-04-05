@@ -3,13 +3,17 @@
 '''
 Tip:
 Use print() to print results.
-Supported additional packages: numpy, pandas and scikit-learn.
+Variables will be cleared for each execution.
 
-Note: it will take a moment to load Pyodide for the first time executing.
-Fetching remote files using `pandas.read_csv`, etc. will not work.
+Additional packages will be automatically loaded
+(for example, pandas and scikit-learn below)
+and may take a bit of time.
 
-Fun fact: the Pyodide runtime remembers everything you've created until
-you reload this page.
+Supported packages in Pyodide can be found here:
+https://pyodide.org/en/stable/usage/packages-in-pyodide.html
+
+Fetching remote files using `pandas.read_csv`,
+etc. does not work.
 '''
 
 from sklearn.datasets import load_iris
@@ -21,6 +25,5 @@ df = pd.DataFrame(iris.data, columns=iris.feature_names)
 get_target_names = lambda label: iris.target_names[label]
 df['species'] = get_target_names(iris.target)
 
-print(df)
-print('---')
-print(df.info())
+print(df, end='\n\n')
+print(df.describe())

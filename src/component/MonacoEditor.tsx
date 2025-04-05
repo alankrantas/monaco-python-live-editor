@@ -5,6 +5,7 @@ import {
 } from "react";
 import Editor from "@monaco-editor/react";
 
+import type { PyodideInterface } from "pyodide";
 import { MonacoEditorProps, EditorOptions } from "./MonacoEditorOptions";
 import { LoadPyodide, ExecuteCode } from "./MonacoEditorExecute";
 import styles from "./MonacoEditor.module.css";
@@ -13,15 +14,15 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
     code = "",
     darkMode = false
 }) => {
-    const [pyodide, setPyodide] = useState(null);
+    const [pyodide, setPyodide] = useState<PyodideInterface | null>(null);
     const [editorCode, setEditorCode] = useState(code);
     const [executing, setExecuting] = useState(false);
     const [editorDarkMode, setEditorDarkMode] = useState(darkMode);
     const [consoleOutput, setConsoleOutput] = useState<string[]>([]);
 
     useEffect(() => {
-        LoadPyodide().then((py) => setPyodide(py));
-    }, []);
+        LoadPyodide().then((loaded) => setPyodide(loaded));
+    });
 
     return (
         <div className={styles.container}>
@@ -34,7 +35,7 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                             onChange={() => setEditorDarkMode(!editorDarkMode)}
                             className={styles.checkbox}
                         />
-                        <span>Dark Mode</span>
+                        <span>&nbsp;Dark Mode</span>
                     </div>
                     <div className={styles.padded}>
                         <Editor
@@ -73,6 +74,7 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                             onClick={async (e) => {
                                 if (!pyodide || executing) return;
                                 setExecuting(true);
+                                setConsoleOutput([]);
                                 setConsoleOutput(await ExecuteCode(pyodide, editorCode));
                                 setExecuting(false);
                             }}

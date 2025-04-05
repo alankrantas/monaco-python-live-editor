@@ -2,14 +2,13 @@
     width: "100%";
     height: "100vh";
     display: "flex";
-    font-family: "Verdana";
     font-size: 16px;
 }
 
 .grid {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 70% 30%;
+    grid-auto-columns: 65% 35%;
 }
 
 .padded {
@@ -23,8 +22,13 @@
     width: 16px;
 }
 
+.textbox {
+    display: inline-block;
+    height: 16px;
+    font-size: 16px;
+}
+
 .button {
-    font-family: "Verdana";
     font-size: 16px;
     text-align: center;
     cursor: pointer;
@@ -34,7 +38,7 @@
 }
 
 .code {
-    font-family: "Courier";
+    font-family: Fira Mono;
     font-size: 16px;
     text-wrap: nowrap;
     display: inline-block;

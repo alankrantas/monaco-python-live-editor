@@ -13,7 +13,7 @@ export const EditorOptions = {
     },
     detectIndentation: false,
     fixedOverflowWidgets: false,
-    fontFamily: "Monaco",
+    fontFamily: "Fira Mono",
     fontSize: 16,
     formatOnPaste: true,
     formatOnType: true,

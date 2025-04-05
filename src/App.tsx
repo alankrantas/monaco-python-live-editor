@@ -15,7 +15,8 @@ function App() {
     return (
         <div>
             <div>
-                <h1>Monaco Python Live Editor (<a href="https://github.com/alankrantas/monaco-python-live-editor" target="_blank">Github Repo</a>)</h1>
+                <h1>Monaco Python Live Editor</h1>
+                <h3>In-browser execution for Python and machine learning packages (<a href="https://github.com/alankrantas/monaco-python-live-editor" target="_blank" rel="noreferrer noopener">repo</a>)</h3>
             </div>
             <div>
                 <Suspense

@@ -1,10 +1,9 @@
 {
     "name": "monaco-python-live-editor",
-    "private": true,
+    "license": "MIT",
     "version": "0.1.0",
     "type": "module",
     "scripts": {
-        "upgrade-all": "yarn-upgrade-all && yarn upgrade",
         "dev": "vite --port 3000 --open --host",
         "start": "yarn dev",
         "build": "vite build",
@@ -25,7 +24,6 @@
         "@types/react-dom": "^18.3.1",
         "@vitejs/plugin-react": "^4.3.4",
         "typescript": "^5.8.2",
-        "vite": "^6.2.5",
-        "yarn-upgrade-all": "^0.7.5"
+        "vite": "^6.2.5"
     }
 }

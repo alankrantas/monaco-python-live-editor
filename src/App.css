@@ -1,4 +1,7 @@
-h1 {
-    font-family: "Verdana";
-    padding: 16px;
+body {
+    font-family: system-ui;
+}
+
+h1, h2, h3 {
+    padding: 16px 0px 0px 16px;
 }
