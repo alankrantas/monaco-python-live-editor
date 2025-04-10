@@ -40,7 +40,7 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                     <div className={styles.padded}>
                         <Editor
                             height="100vh"
-                            theme={editorDarkMode ? "vs-dark" : "vs"}
+                            theme={editorDarkMode ? "hc-black" : "hc-light"}
                             options={EditorOptions}
                             language="python"
                             value={editorCode}
