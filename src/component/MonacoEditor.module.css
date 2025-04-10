@@ -38,9 +38,9 @@
 }
 
 .code {
-    font-family: Fira Mono;
+    font-family: Consolas;
     font-size: 16px;
     text-wrap: nowrap;
-    display: inline-block;
+    overflow-x: scroll;
     background-color: #fdf5e6;
 }
