@@ -4,7 +4,7 @@
 
 A simple demonstration to wrap [`@monaco-editor/react`](https://www.npmjs.com/package/@monaco-editor/react) combined with [`Pyodide`](https://pyodide.org/en/stable/index.html) to create a basic online Python editor component with a few additional packages supported. The React app is [created/built by Vite](https://vitejs.dev/) and deployed to GitHub Pages using Github Actions.
 
-`/src/data/pyodide-settings.json` defines the Pyodide version and packages that would be pre-loaded. Pyodide will automatically install [supported external packages](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) found in imports.
+`preload_packages.jsonn` defines the Python packages that would be pre-loaded. Pyodide will also automatically install [supported external packages](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) found in imports.
 
 ## Development
 

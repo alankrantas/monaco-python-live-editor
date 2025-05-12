@@ -26,4 +26,7 @@ get_target_names = lambda label: iris.target_names[label]
 df['species'] = get_target_names(iris.target)
 
 print(df, end='\n\n')
-print(df.describe())
+print(df.describe(), end='\n\n')
+
+import sys
+print('Python kernel:', sys.version)

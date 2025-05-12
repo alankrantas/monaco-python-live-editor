@@ -7,11 +7,12 @@
         "dev": "vite --port 3000 --open --host",
         "start": "yarn dev",
         "build": "vite build",
-        "preview": "vite preview --port 8080 --open --host",
+        "preview": "yarn copy_pyodide_version && vite preview --port 8080 --open --host",
         "serve": "yarn preview",
         "pull": "git pull origin main",
         "push": "git add . && git commit -m \"User updating\" && git push origin main",
-        "commit": "yarn pull && yarn push"
+        "commit": "yarn pull && yarn push",
+        "copy_pyodide_version": "jq '{version: .dependencies.pyodide}' package.json > src/data/pyodide_version.json"
     },
     "dependencies": {
         "@monaco-editor/react": "^4.7.0",

@@ -21,7 +21,7 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
     const [consoleOutput, setConsoleOutput] = useState<string[]>([]);
 
     useEffect(() => {
-        LoadPyodide().then((loaded) => setPyodide(loaded));
+        if (!pyodide) LoadPyodide().then((loaded) => setPyodide(loaded));
     });
 
     return (
@@ -40,7 +40,7 @@ const MonacoEditor: FunctionComponent<MonacoEditorProps> = ({
                     <div className={styles.padded}>
                         <Editor
                             height="100vh"
-                            theme={editorDarkMode ? "hc-black" : "hc-light"}
+                            theme={editorDarkMode ? "vs-dark" : "vs"}
                             options={EditorOptions}
                             language="python"
                             value={editorCode}

@@ -1,5 +1,5 @@
 import { loadPyodide, type PyodideInterface } from "pyodide";
-import pyodideSettings from "../data/pyodide-settings.json";
+import preload_python_packages from "../data/preload_packages.json";
 
 let consoleOutput: string[] = [];
 
@@ -9,11 +9,22 @@ const stdout = (msg: any) => {
 };
 
 export const LoadPyodide = async (): Promise<PyodideInterface> => {
+    let pyodide_version = "0.0.0";
+
+    if (import.meta.env.DEV) {
+        pyodide_version = (await import('../../package.json')).dependencies.pyodide;
+    } else {
+        pyodide_version = (await import('../data/pyodide_version.json')).version;
+    }
+    pyodide_version = pyodide_version.replaceAll('^', '').replaceAll('~', '');
+
+    console.log(`Found Pyodide version: ${pyodide_version}`);
+
     return loadPyodide({
-        indexURL: `https://cdn.jsdelivr.net/pyodide/v${pyodideSettings.version}/full/`,
+        indexURL: `https://cdn.jsdelivr.net/pyodide/v${pyodide_version}/full/`,
         stdout: stdout,
         stderr: stdout,
-        packages : pyodideSettings.preload_packages,
+        packages: preload_python_packages,
         checkAPIVersion: true,
     });
 };
