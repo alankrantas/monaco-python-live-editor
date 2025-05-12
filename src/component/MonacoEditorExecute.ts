@@ -44,7 +44,7 @@ export const ExecuteCode = async (pyodide: PyodideInterface, code: string): Prom
     } catch (e: any) {
         stdout(e.stack);
     } finally {
-        stdout(`\n[editor (Pyodide: v${pyodide.version}): ${new Date().toLocaleString("en-us")}]`);
+        stdout(`\n[Editor (Pyodide: v${pyodide.version}): ${new Date().toLocaleString("en-us")}]`);
     }
 
     return consoleOutput;
