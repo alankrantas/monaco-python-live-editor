@@ -4,14 +4,14 @@
     "version": "0.1.0",
     "type": "module",
     "scripts": {
-        "dev": "vite --port 3000 --open --host",
+        "dev": "yarn copy_pyodide_version && vite --port 3000 --open --host",
         "start": "yarn dev",
-        "build": "copy_pyodide_version && vite build",
+        "build": "yarn copy_pyodide_version && vite build",
         "preview": "yarn copy_pyodide_version && vite preview --port 8080 --open --host",
         "serve": "yarn preview",
         "pull": "git pull origin main",
         "push": "git add . && git commit -m \"User updating\" && git push origin main",
-        "commit": "yarn pull && yarn push",
+        "commit": "yarn pull && yarn copy_pyodide_version && yarn push",
         "copy_pyodide_version": "jq '{version: .dependencies.pyodide}' package.json > src/data/pyodide_version.json"
     },
     "dependencies": {
