@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "vite --port 3000 --open --host",
         "start": "yarn dev",
-        "build": "vite build",
+        "build": "copy_pyodide_version && vite build",
         "preview": "yarn copy_pyodide_version && vite preview --port 8080 --open --host",
         "serve": "yarn preview",
         "pull": "git pull origin main",
