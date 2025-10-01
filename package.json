@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@monaco-editor/react": "^4.7.0",
-        "pyodide": "^0.28.2",
+        "pyodide": "^0.28.3",
         "react": "^19.1.1",
         "react-dom": "19.1.1"
     },
